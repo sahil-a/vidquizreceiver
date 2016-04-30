@@ -62,7 +62,7 @@ final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate, MCSession
     }
     
     func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        for i in 1..<discoveredPeers.count {
+        for i in 0..<discoveredPeers.count {
             if discoveredPeers[i] == peerID {
                 discoveredPeers.removeAtIndex(i)
             }
