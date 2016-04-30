@@ -7,19 +7,33 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class ViewController: UIViewController {
 
+    private let multipeerClient = MultipeerClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        multipeerClient.onStateChange = { state, peerID in
+            let client = self.multipeerClient
+            switch state {
+            case .NotConnected:
+                print("Not Connected")
+                if let session = client.session where session.connectedPeers.count == 0 {
+                    client.browser?.invitePeer(peerID, toSession: session, withContext: nil,
+                                               timeout: 30)
+                }
+            case .Connecting:
+                print("Connecting...")
+            case .Connected:
+                print("Connected")
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+            }
+        }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 
 }
-

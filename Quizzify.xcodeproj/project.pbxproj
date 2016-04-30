@@ -12,6 +12,10 @@
 		BA2585371CC9BE0900A75B31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2585351CC9BE0900A75B31 /* Main.storyboard */; };
 		BA2585391CC9BE0900A75B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2585381CC9BE0900A75B31 /* Assets.xcassets */; };
 		BA25853C1CC9BE0900A75B31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA25853A1CC9BE0900A75B31 /* LaunchScreen.storyboard */; };
+		BA7F71481CD1CE0D00A7C768 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F71471CD1CE0D00A7C768 /* MultipeerConnectivity.framework */; };
+		BA7F714A1CD1DC0D00A7C768 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71491CD1DC0D00A7C768 /* Question.swift */; };
+		BA7F714E1CD2E25400A7C768 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */; };
+		BA7F71531CD4398C00A7C768 /* MultipeerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		BA2585381CC9BE0900A75B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA25853B1CC9BE0900A75B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA25853D1CC9BE0900A75B31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA7F71471CD1CE0D00A7C768 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		BA7F71491CD1DC0D00A7C768 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7F714E1CD2E25400A7C768 /* AVFoundation.framework in Frameworks */,
+				BA7F71481CD1CE0D00A7C768 /* MultipeerConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +48,8 @@
 		BA2585251CC9BE0900A75B31 = {
 			isa = PBXGroup;
 			children = (
+				BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */,
+				BA7F71471CD1CE0D00A7C768 /* MultipeerConnectivity.framework */,
 				BA2585301CC9BE0900A75B31 /* Quizzify */,
 				BA25852F1CC9BE0900A75B31 /* Products */,
 			);
@@ -60,6 +72,8 @@
 				BA2585381CC9BE0900A75B31 /* Assets.xcassets */,
 				BA25853A1CC9BE0900A75B31 /* LaunchScreen.storyboard */,
 				BA25853D1CC9BE0900A75B31 /* Info.plist */,
+				BA7F71491CD1DC0D00A7C768 /* Question.swift */,
+				BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */,
 			);
 			path = Quizzify;
 			sourceTree = "<group>";
@@ -135,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7F714A1CD1DC0D00A7C768 /* Question.swift in Sources */,
 				BA2585341CC9BE0900A75B31 /* ViewController.swift in Sources */,
+				BA7F71531CD4398C00A7C768 /* MultipeerClient.swift in Sources */,
 				BA2585321CC9BE0900A75B31 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +302,7 @@
 				BA2585421CC9BE0900A75B31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
