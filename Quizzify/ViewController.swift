@@ -12,6 +12,11 @@ import MultipeerConnectivity
 class ViewController: UIViewController {
 
     private let multipeerClient = MultipeerClient()
+
+    @IBAction func respond(sender: UIButton) {
+        let response = Response(responder: "Sahil", choice: 1, question: multipeerClient.latestQuestion)
+        multipeerClient.send(response.archive())
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

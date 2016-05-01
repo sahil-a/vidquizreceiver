@@ -16,6 +16,7 @@
 		BA7F714A1CD1DC0D00A7C768 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71491CD1DC0D00A7C768 /* Question.swift */; };
 		BA7F714E1CD2E25400A7C768 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */; };
 		BA7F71531CD4398C00A7C768 /* MultipeerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */; };
+		BA7F71571CD5BFC900A7C768 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71561CD5BFC800A7C768 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BA7F71491CD1DC0D00A7C768 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerClient.swift; sourceTree = "<group>"; };
+		BA7F71561CD5BFC800A7C768 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +68,41 @@
 		BA2585301CC9BE0900A75B31 /* Quizzify */ = {
 			isa = PBXGroup;
 			children = (
+				BA7F71581CD5BFD300A7C768 /* Model */,
+				BA7F71591CD5BFE400A7C768 /* View */,
+				BA7F715A1CD5C01700A7C768 /* Controller */,
 				BA2585311CC9BE0900A75B31 /* AppDelegate.swift */,
-				BA2585331CC9BE0900A75B31 /* ViewController.swift */,
-				BA2585351CC9BE0900A75B31 /* Main.storyboard */,
-				BA2585381CC9BE0900A75B31 /* Assets.xcassets */,
-				BA25853A1CC9BE0900A75B31 /* LaunchScreen.storyboard */,
 				BA25853D1CC9BE0900A75B31 /* Info.plist */,
-				BA7F71491CD1DC0D00A7C768 /* Question.swift */,
 				BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */,
 			);
 			path = Quizzify;
+			sourceTree = "<group>";
+		};
+		BA7F71581CD5BFD300A7C768 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA7F71491CD1DC0D00A7C768 /* Question.swift */,
+				BA7F71561CD5BFC800A7C768 /* Response.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BA7F71591CD5BFE400A7C768 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA2585351CC9BE0900A75B31 /* Main.storyboard */,
+				BA2585381CC9BE0900A75B31 /* Assets.xcassets */,
+				BA25853A1CC9BE0900A75B31 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BA7F715A1CD5C01700A7C768 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA2585331CC9BE0900A75B31 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +180,7 @@
 				BA2585341CC9BE0900A75B31 /* ViewController.swift in Sources */,
 				BA7F71531CD4398C00A7C768 /* MultipeerClient.swift in Sources */,
 				BA2585321CC9BE0900A75B31 /* AppDelegate.swift in Sources */,
+				BA7F71571CD5BFC900A7C768 /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,16 +11,21 @@ import MultipeerConnectivity
 
 typealias stateChange = ((state: MCSessionState, peerID: MCPeerID) -> ())?
 
+struct Peer {
+    var name: String
+}
+
 final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     
     // MARK: Properties
     
-    private let localPeerID = MCPeerID(displayName: "test")
+    let localPeerID = MCPeerID(displayName: "?r")
     let browser: MCNearbyServiceBrowser?
     private(set) var session: MCSession?
     private(set) var state = MCSessionState.NotConnected
     var onStateChange: stateChange?
     var discoveredPeers: [MCPeerID] = []
+    var latestQuestion: Question!
     
     // MARK: Init
     
@@ -63,8 +68,11 @@ final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate, MCSession
     
     func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         for i in 0..<discoveredPeers.count {
+            if i < discoveredPeers.count {
             if discoveredPeers[i] == peerID {
                 discoveredPeers.removeAtIndex(i)
+                break
+            }
             }
         }
     }
@@ -80,6 +88,7 @@ final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate, MCSession
         if let questionDict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String:AnyObject] {
             let question = Question(archive: questionDict)
             print(question)
+            latestQuestion = question
         }
     }
     
