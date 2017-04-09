@@ -9,26 +9,58 @@
 import Foundation
 import MultipeerConnectivity
 
-typealias stateChange = ((state: MCSessionState, peerID: MCPeerID) -> ())?
+typealias stateChange = ((state: State, video: Video) -> ())?
 
-struct Peer {
-    var name: String
+enum State {
+    case Found, Lost
 }
 
-final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
+struct Peer {
+    var letter: String
+    var color: UIColor
+    
+    init(displayName: String) {
+        letter = displayName.substringToIndex(displayName.startIndex.successor())
+        let colorString = displayName.substringFromIndex(displayName.startIndex.successor())
+        switch colorString {
+        case "r":
+            color = UIColor(colorLiteralRed: 233 / 255, green: 99 / 255, blue: 99 / 255, alpha: 1)
+        case "g":
+            color = UIColor(colorLiteralRed: 92 / 255, green: 217 / 255, blue: 170 / 255, alpha: 1)
+        case "b":
+            color = UIColor(colorLiteralRed: 99 / 255, green: 187 / 255, blue: 233 / 255, alpha: 1)
+        case "y":
+            color = UIColor(colorLiteralRed: 229 / 255, green: 208 / 255, blue: 150 / 255, alpha: 1)
+        case "p":
+            color = UIColor(colorLiteralRed: 216 / 255, green: 111 / 255, blue: 173 / 255, alpha: 1)
+        case "u":
+            color = UIColor(colorLiteralRed: 174 / 255, green: 150 / 255, blue: 229 / 255, alpha: 1)
+            
+        default:
+            color = UIColor.whiteColor()
+        }
+    }
+}
+
+
+struct Video {
+    var name: String
+    var peers: [Peer]
+    var peerID: MCPeerID
+}
+
+final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate {
     
     // MARK: Properties
     
-    let localPeerID = MCPeerID(displayName: "?r")
+    var localPeerID = MCPeerID(displayName: "?r")
     let browser: MCNearbyServiceBrowser?
-    private(set) var session: MCSession?
-    private(set) var state = MCSessionState.NotConnected
     var onStateChange: stateChange?
-    var discoveredPeers: [MCPeerID] = []
-    var latestQuestion: Question!
+    var videos: [Video] = []
+    
+    
     
     // MARK: Init
-    
     override init() {
         browser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: "quizzify")
         super.init()
@@ -36,72 +68,45 @@ final class MultipeerClient: NSObject, MCNearbyServiceBrowserDelegate, MCSession
         browser?.startBrowsingForPeers()
     }
     
-    // MARK: Send
-    
-    func send(data: NSData) {
-        guard let session = session else { return }
-        do {
-            try session.sendData(data, toPeers: session.connectedPeers, withMode: .Reliable)
-        } catch {}
+    func connectToPeer(peerID: MCPeerID, name: String) -> MCSession {
+        
+        let session = MCSession(peer: localPeerID)
+        
+        browser!.invitePeer(peerID, toSession: session, withContext: NSKeyedArchiver.archivedDataWithRootObject(name), timeout: 10)
+        return session
     }
-    
-    func sendString(string: NSString) {
-        if let stringData = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            send(stringData)
-        }
-    }
-    
-    // MARK: MCNearbyServiceBrowserDelegate
     
     func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo
         info: [String : String]?) {
         
-        discoveredPeers.append(peerID)
-        
-        // for now
-        if session == nil {
-            session = MCSession(peer: localPeerID)
-            session?.delegate = self
+        let name = info!["name"]!
+        var connectedPeers = info!["connected"]!
+        var peers: [Peer] = []
+        var counter = 0
+        while counter < connectedPeers.characters.count {
+            let dn = connectedPeers.substringToIndex(connectedPeers.startIndex.advancedBy(2))
+            peers.append(Peer(displayName: dn))
+            connectedPeers = connectedPeers.substringFromIndex(connectedPeers.startIndex.advancedBy(2))
+            counter += 1
         }
-        browser.invitePeer(peerID, toSession: session!, withContext: nil, timeout: 30)
+        
+        videos.append(Video(name: name, peers: peers, peerID: peerID))
+        onStateChange??(state: .Found, video: videos.last!)
     }
     
     func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        for i in 0..<discoveredPeers.count {
-            if i < discoveredPeers.count {
-            if discoveredPeers[i] == peerID {
-                discoveredPeers.removeAtIndex(i)
+        for i in 0..<videos.count {
+            if i < videos.count {
+            if videos[i].peerID == peerID {
+                
+                onStateChange??(state: .Lost, video: videos[i])
+                videos.removeAtIndex(i)
                 break
             }
             }
         }
     }
     
-    // MARK: MCSessionDelegate
-    
-    func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
-        self.state = state
-        onStateChange??(state: state, peerID: peerID)
-    }
-    
-    func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
-        if let questionDict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String:AnyObject] {
-            let question = Question(archive: questionDict)
-            print(question)
-            latestQuestion = question
-        }
-    }
-    
-    func session(session: MCSession, didReceiveStream stream: NSInputStream,
-                 withName streamName: String, fromPeer peerID: MCPeerID) {
-    }
-    
-    func session(session: MCSession, didStartReceivingResourceWithName resourceName: String,
-                 fromPeer peerID: MCPeerID, withProgress progress: NSProgress) {
-    }
-    
-    func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String,
-                 fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {
-    }
+
 }
 

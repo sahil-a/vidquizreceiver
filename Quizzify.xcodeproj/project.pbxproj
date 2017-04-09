@@ -17,10 +17,16 @@
 		BA7F714E1CD2E25400A7C768 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */; };
 		BA7F71531CD4398C00A7C768 /* MultipeerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */; };
 		BA7F71571CD5BFC900A7C768 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71561CD5BFC800A7C768 /* Response.swift */; };
+		BA7F71641CD687D500A7C768 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71631CD687D500A7C768 /* VideoCell.swift */; };
+		BA7F71661CD69ADA00A7C768 /* PeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71651CD69ADA00A7C768 /* PeerView.swift */; };
+		BA7F71681CD6A7F000A7C768 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71671CD6A7F000A7C768 /* SelectionViewController.swift */; };
+		BA7F716A1CD6A84A00A7C768 /* ColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F71691CD6A84A00A7C768 /* ColorSelectionView.swift */; };
+		BA7F716C1CD6AA2500A7C768 /* SessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F716B1CD6AA2500A7C768 /* SessionHandler.swift */; };
+		BA7F716E1CD6C09700A7C768 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F716D1CD6C09700A7C768 /* QuestionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA25852E1CC9BE0900A75B31 /* Quizzify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quizzify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA25852E1CC9BE0900A75B31 /* Sahil Ambardekar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sahil Ambardekar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2585311CC9BE0900A75B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA2585331CC9BE0900A75B31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA2585361CC9BE0900A75B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,6 +38,12 @@
 		BA7F714D1CD2E25400A7C768 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerClient.swift; sourceTree = "<group>"; };
 		BA7F71561CD5BFC800A7C768 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		BA7F71631CD687D500A7C768 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		BA7F71651CD69ADA00A7C768 /* PeerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerView.swift; sourceTree = "<group>"; };
+		BA7F71671CD6A7F000A7C768 /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		BA7F71691CD6A84A00A7C768 /* ColorSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionView.swift; sourceTree = "<group>"; };
+		BA7F716B1CD6AA2500A7C768 /* SessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHandler.swift; sourceTree = "<group>"; };
+		BA7F716D1CD6C09700A7C768 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +72,7 @@
 		BA25852F1CC9BE0900A75B31 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA25852E1CC9BE0900A75B31 /* Quizzify.app */,
+				BA25852E1CC9BE0900A75B31 /* Sahil Ambardekar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +86,7 @@
 				BA2585311CC9BE0900A75B31 /* AppDelegate.swift */,
 				BA25853D1CC9BE0900A75B31 /* Info.plist */,
 				BA7F71521CD4398C00A7C768 /* MultipeerClient.swift */,
+				BA7F716B1CD6AA2500A7C768 /* SessionHandler.swift */,
 			);
 			path = Quizzify;
 			sourceTree = "<group>";
@@ -93,6 +106,9 @@
 				BA2585351CC9BE0900A75B31 /* Main.storyboard */,
 				BA2585381CC9BE0900A75B31 /* Assets.xcassets */,
 				BA25853A1CC9BE0900A75B31 /* LaunchScreen.storyboard */,
+				BA7F71631CD687D500A7C768 /* VideoCell.swift */,
+				BA7F71651CD69ADA00A7C768 /* PeerView.swift */,
+				BA7F71691CD6A84A00A7C768 /* ColorSelectionView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -101,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				BA2585331CC9BE0900A75B31 /* ViewController.swift */,
+				BA7F71671CD6A7F000A7C768 /* SelectionViewController.swift */,
+				BA7F716D1CD6C09700A7C768 /* QuestionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -122,7 +140,7 @@
 			);
 			name = Quizzify;
 			productName = Quizzify;
-			productReference = BA25852E1CC9BE0900A75B31 /* Quizzify.app */;
+			productReference = BA25852E1CC9BE0900A75B31 /* Sahil Ambardekar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -181,6 +199,12 @@
 				BA7F71531CD4398C00A7C768 /* MultipeerClient.swift in Sources */,
 				BA2585321CC9BE0900A75B31 /* AppDelegate.swift in Sources */,
 				BA7F71571CD5BFC900A7C768 /* Response.swift in Sources */,
+				BA7F71681CD6A7F000A7C768 /* SelectionViewController.swift in Sources */,
+				BA7F716A1CD6A84A00A7C768 /* ColorSelectionView.swift in Sources */,
+				BA7F71641CD687D500A7C768 /* VideoCell.swift in Sources */,
+				BA7F71661CD69ADA00A7C768 /* PeerView.swift in Sources */,
+				BA7F716C1CD6AA2500A7C768 /* SessionHandler.swift in Sources */,
+				BA7F716E1CD6C09700A7C768 /* QuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +320,7 @@
 				INFOPLIST_FILE = Quizzify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sahilambardekar.Quizzify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Sahil Ambardekar";
 			};
 			name = Debug;
 		};
@@ -307,7 +331,7 @@
 				INFOPLIST_FILE = Quizzify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sahilambardekar.Quizzify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Sahil Ambardekar";
 			};
 			name = Release;
 		};
